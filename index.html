@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello MundU</title>
+    
+</head>
+<body>
+    <div id="app">
+
+        <div id="box">
+            <h1>Gere um nome a partir desse input</h1>
+            <div id="chek">
+
+            </div>
+                <ul>
+                </ul>
+        </div>
+    </div>
+
+    <script>
+        // cria um elemento but�o por ai fora ou dentro da div ninguem sabe! mas dentro do body
+        var butao = document.createElement('button');
+        // � o texto que vai dentro do but�o perdido 
+        var texto = document.createTextNode('Criar Quadrado');
+        // aqui � aonde o but�o perdido encontra um nome ou texto pra usar dentro dele
+        butao.appendChild(texto);
+        //descosidere os anteriores o but�o vai dentro desse container que por si vai dentro de uma div com id app
+        var container = document.querySelector('#app');
+        var nome = document.createElement('h1');
+        var nomeTexto = document.createTextNode('Aperte o Bot�o e crie um quadrado que muda de cor!');
+        nome.appendChild(nomeTexto);
+        container.appendChild(nome);
+        // aqui colocamos o but�o pra dentro
+        container.appendChild(butao);
+        // array contendo nomes pre definidos denominado VETOR < chick em !
+        var nomes = ["Diego", "hErick", "Geverson"];
+        // container para inserir na toolbox        
+        var container2 = document.querySelector('#box');
+        // chek container separado para input e botao
+        var chek = document.querySelector('#chek');
+        // nova entranda diz respeito ao input e o novo valor de caracteres 
+        var novaEntrada = document.createElement('input');
+        // btn chek ? deve ser um botão olha la 
+        var btnChek = document.createElement('button');
+        // aqui inserimos dentro do dom html o input para receber novos valores
+        chek.appendChild(novaEntrada);
+        // cria um texto hmmm é mesmo ? 
+        var text = document.createTextNode('Adicionar');
+
+        btnChek.appendChild(text)
+        chek.appendChild(btnChek);
+
+        // criamos um elemento filho do UL
+        var list0 = document.createElement('li');
+        // criamos um novo elemento de texto para abrigar o valor da posi��o 1 do vetor
+        var lista0 = document.createTextNode(nomes[0]);
+        // colocamos o primeiro vetor da lista pre-definida pra dentro do elemento filho
+        list0.appendChild(lista0);
+        // colocamos o valor do elemento filho para dentro do container 
+        container2.appendChild(list0);
+        // criamos um elemento filho do UL
+        var list1 = document.createElement('li');
+        // criamos um novo elemento de texto para abrigar o valor da posi��o 2 do vetor
+        var lista1 = document.createTextNode(nomes[1]);
+        // colocamos o segundo vetor da lista pre-definida pra dentro do elemento filho
+        list1.appendChild(lista1);        
+        // colocamos o valor do elemento filho para dentro do container 
+        container2.appendChild(list1);
+        // criamos um elemento filho do UL
+        var list2 = document.createElement('li');
+        // criamos um novo elemento de texto para abrigar o valor da posi��o 3 do vetor
+        var lista2 = document.createTextNode(nomes[2]);
+        // colocamos o terceiro vetor da lista pre-definida pra dentro do elemento filho
+        list2.appendChild(lista2);
+        // colocamos o valor do elemento filho para dentro do container 
+        container2.appendChild(list2);
+        // criamos um bot�o para adicionar uma fun��o pra interagir com o valor do input adicionando ao valor do elemento pai UL
+        var btnAdicionar = document.querySelector('button.btn');
+        // criamos um input para receber o valor e mandar assim que o bot�o for clicado para dentro do elemento pai UL
+        // var entrada = document.querySelector("input[name=nome]");
+        
+        
+        // fun��o que aciona o bot�o criado acima para chama uma fun�o anonima 
+        btnChek.onclick = ()=>{
+            // variavel texto recebe o valor do input acima
+            var texto = novaEntrada.value;
+            
+            // criamos o elemento filho que recebera o valor do texto que o input mandou
+            var list3 = document.createElement('li');
+            // definimos uma variavel para interagir com o valor de texto = que na vdd � o valor texto
+            var lista3 = document.createTextNode(texto);
+
+            if(texto.length <= 4){
+                alert("bug, insira um nome ou qualquer palavra");
+            }else{
+            // // mandamos o valor dessa variavel para dentro do elemento filho criado
+            list3.appendChild(lista3);
+            // // mandamos o elemento filho para dentro do elemento pai UL
+            container2.appendChild(list3);
+            
+            alert("Valor inserido");
+
+            novaEntrada.value = '';   
+
+            
+            };
+        };
+        
+        
+        // condi��o de ao clicar criar um novo quadrado com as referencias adequada
+        butao.onclick = function main(){
+        // cria um novo elemento no corpo da pagina elemento = div vazia
+        var novo = document.createElement('div');
+        // definimos a largura
+        novo.style.width = "100px";
+        // definimos a altura
+        novo.style.height = "100px";
+        // damos uma cor
+        novo.style.backgroundColor = '#f00';     
+        // mandamos para dentro do corpo da pagina   
+        container.appendChild(novo);
+        // fun��o serve para criar uma cor aleatoria
+        function coraleatoria(){
+        // definimos uma string para conter os valores totais das cores 
+        var numeros = "0123456789ABCDEF";
+        // criamos o sharp para receber o valor gerado aleatorio
+        var Cor = "#";
+        // criamos um loop para definir seis numeros diferentes com letra no meio
+        for (var i = 0; i < 6; i++) {
+        // criar a cor gerada apartir das variaveis acima e as fun��es Math.floor e random para gera uma combina��o diferente
+        Cor += numeros[Math.floor(Math.random() * 16)];
+                }
+            return Cor;
+            }
+            // fun��o serve para assim que passar o mouse por cima do quadrado chama a fun��o acima que mudara a cor do quadrado
+            novo.onmouseover = () =>{
+            var cor = coraleatoria(); 
+            novo.style.backgroundColor = cor
+            }
+        }        
+    </script>
+</body>
+</html>
